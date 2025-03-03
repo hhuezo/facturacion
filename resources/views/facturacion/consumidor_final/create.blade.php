@@ -124,6 +124,69 @@
 
                         </div>
 
+
+                        <div class="table-responsive">
+                            <table class="table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio unitario</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Impuesto</th>
+                                        <th scope="col">Descuento %</th>
+                                        <th scope="col">Unitario IVA</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Guardar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td><input type="number" class="form-control" name="precio_unitario"
+                                                id="precio_unitario" min="0" step="0.01"></td>
+                                        <td><input type="number" class="form-control" name="cantidad" id="cantidad"
+                                                onchange="calculosTotales()" min="1" step="1"></td>
+                                        <td><input type="number" class="form-control" name="impuesto" id="impuesto"
+                                                min="0" step="0.01"></td>
+
+                                        <td><input type="number" class="form-control" name="descuento" id="descuento"
+                                                min="0" max="100" step="0.01"></td>
+                                        <td><input type="number" class="form-control" name="unitario_iva" id="unitario_iva"
+                                                min="0" step="0.01" readonly></td>
+                                        <td><input type="number" class="form-control" name="total" id="total"
+                                                min="0" step="0.01" readonly></td>
+
+                                        <td> <button class="btn btn-info" type="button"> <svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-floppy2-fill" viewBox="0 0 16 16">
+                                                    <path d="M12 2h-2v3h2z" />
+                                                    <path
+                                                        d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1" />
+                                                </svg></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="7">
+                                            <center>
+                                                <button class="btn btn-success"> <svg xmlns="http://www.w3.org/2000/svg"
+                                                        width="16" height="16" fill="currentColor"
+                                                        class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                                                    </svg></button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <input type="text" class="form-control" name="tipo_iva_id" id="tipo_iva_id" min="0"
+                                step="0.01">
+
+                        </div>
+
                     </div>
                     <div class="card-footer text-end">
                         <button type="submit" class="btn btn-primary">Continuar</button>

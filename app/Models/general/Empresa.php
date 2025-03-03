@@ -5,6 +5,8 @@ namespace App\Models\general;
 use App\Models\catalogo\TipoContribuyente;
 use App\Models\catalogo\TipoNegocio;
 use App\Models\catalogo\TipoProducto;
+use App\Models\hacienda\ActividadEconomica;
+use App\Models\hacienda\TipoItem;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,17 +21,23 @@ class Empresa extends Model
 
     protected $fillable = [
         'razon_social',
-        'Nit',
+        'nit',
         'nombre_comercial',
+        'numero_iva',
         'direccion',
         'correo',
         'telefono',
         'tipo_contribuyente_id',
-        'tipo_negocio_id',
-        'agente_retencion',
-        'tipo_producto_id',
         'nrc',
-        'logo',
+        'agente_retencion',
+        'mh_actividad_economica_id',
+        'mh_tipo_item_id',
+        'ambiente_id',
+        'clave_publica',
+        'clave_privada',
+        'password_api',
+        'url_firmador',
+        'logo'
     ];
 
     // Definir las relaciones con otras tablas
@@ -38,14 +46,14 @@ class Empresa extends Model
         return $this->belongsTo(TipoContribuyente::class, 'tipo_contribuyente_id');
     }
 
-    public function tipoNegocio()
+    public function actividadEconomica()
     {
-        return $this->belongsTo(TipoNegocio::class, 'tipo_negocio_id');
+        return $this->belongsTo(ActividadEconomica::class, 'mh_actividad_economica_id');
     }
 
-    public function tipoProducto()
+    public function tipoItem()
     {
-        return $this->belongsTo(TipoProducto::class, 'tipo_producto_id');
+        return $this->belongsTo(TipoItem::class, 'mh_tipo_item_id');
     }
 
 
@@ -58,5 +66,10 @@ class Empresa extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function sucursales()
+    {
+        return $this->hasMany(EmpresaSucursal::class, 'empresa_id');
     }
 }

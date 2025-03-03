@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\catalogo;
+namespace App\Models\hacienda;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,15 +9,19 @@ class Departamento extends Model
 {
     use HasFactory;
 
-    protected $table = 'departamento';
+    protected $table = 'mh_departamento';
+
+    protected $primaryKey = 'id';
+
+    public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
         'codigo',
+        'nombre',
     ];
 
     public function municipios()
     {
-        return $this->hasMany(Municipio::class, 'departamento_id');
+        return $this->hasMany(Municipio::class, 'mh_departamento_id', 'id');
     }
 }

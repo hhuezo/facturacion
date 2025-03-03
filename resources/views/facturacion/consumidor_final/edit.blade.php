@@ -24,7 +24,8 @@
                         Consumidor final
                     </div>
                     <div class="prism-toggle">
-                        <a href="{{ url('consumidor_final') }}"> <button class="btn btn-primary">
+                        <a href="#"> <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#modal-create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -206,6 +207,27 @@
 
 
 
+    <div class="modal fade" id="modal-create" tabindex="-1" aria-labelledby="modal-createLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-createLabel">Large modal
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select select2" id="producto" name="producto">
+                        <option value="">Seleccione</option>
+                        <option value="1">Producto 1</option>
+                        <option value="2">Producto 2</option>
+                        <option value="3">Producto 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="{{ asset('assets/js/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2.min.js') }}"></script>
@@ -213,7 +235,12 @@
     <script>
         $(document).ready(function() {
 
-            $('.select2').select2()
+            $('.select2').select2();
+            $('#producto').select2({
+                dropdownParent: $('#modal-create') // Se asegura que el dropdown aparezca dentro del modal
+            });
+
+
             // Llamar a la función para expandir el menú y resaltar la opción Producto
             expandMenuAndHighlightOption('facturacionMenu', 'consumidor_final_Option');
 

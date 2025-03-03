@@ -1,27 +1,28 @@
 <?php
 
-namespace App\Models\catalogo;
+namespace App\Models\hacienda;
 
 use App\Models\general\Empresa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoNegocio extends Model
+class TipoItem extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipo_negocio';
+    protected $table = 'mh_tipo_item';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
-        'descripcion',
+        'codigo',
+        'nombre',
         'activo'
     ];
 
      // Relación inversa de empresa
      public function empresas()
      {
-         return $this->hasMany(Empresa::class, 'tipo_negocio_id');
+         return $this->hasMany(Empresa::class, 'mh_tipo_item_id');
      }
 }
